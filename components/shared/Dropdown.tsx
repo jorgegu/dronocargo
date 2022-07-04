@@ -5,7 +5,7 @@ import { Button, Text, Image } from "../../core/ui";
 const StyledButton = styled(Button)`
   display: flex;
   align-items: center;
-  gap: 14px;
+  width: 100%;
   min-width: 120px;
   border: solid 1px ${({ theme }) => theme.colors.borderGray};
 `;
@@ -15,6 +15,8 @@ const Container = styled.div`
 `;
 
 const IconImage = styled(Image)<{ isOpen: boolean }>`
+  position: absolute;
+  right: 20px;
   ${({ isOpen }) => (isOpen ? "transform: rotate(180deg)" : "")};
 `;
 
@@ -49,24 +51,24 @@ export interface DropdonwOption {
 }
 
 interface Props {
-  onSelect: (value: string) => void;
   name: string;
   options: DropdonwOption[];
+  onSelect?: (value: string) => void;
   text?: string;
   iconSrc?: string;
 }
 
 const Dropdown: FunctionComponent<Props> = ({
-  onSelect,
   name,
   options,
+  onSelect,
   text = "Select",
   iconSrc = "/arrow_bottom_icon.svg",
 }: Props) => {
   const [listShowed, setListShowed] = useState<boolean>(false);
   const handleSelect = (value: string) => {
     setListShowed((prev) => !prev);
-    onSelect(value);
+    onSelect && onSelect(value);
   };
   return (
     <Container>
@@ -79,6 +81,7 @@ const Dropdown: FunctionComponent<Props> = ({
           height="8px"
           src={iconSrc}
           isOpen={listShowed}
+          alt="dropdown arrow icon"
         />
       </StyledButton>
       {listShowed && (

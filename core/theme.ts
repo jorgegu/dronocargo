@@ -13,7 +13,8 @@ const breakpoints = {
     green: "#307460",
     darkGreen: "#2a6352",
     textGray: "#808080",
-    borderGray: "#d9d9d9"
+    borderGray: "#d9d9d9",
+    red: "#f34921"
   };
 
   export const theme: DefaultTheme = {

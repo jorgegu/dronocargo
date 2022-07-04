@@ -12,7 +12,7 @@ const Cell: FunctionComponent<Props> = ({ headline, value }: Props) => (
     <Text fontSize="14px" lineHeight="16px" color="textGray">
       {headline}
     </Text>
-    <Text fontWeight="500" lineHeight="24px;">
+    <Text fontWeight="500" lineHeight="24px">
       {value}
     </Text>
   </div>

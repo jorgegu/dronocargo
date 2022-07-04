@@ -25,7 +25,7 @@ const ButtonWithIcon: FunctionComponent<Props> = ({
     <Text fontWeight="500" lineHeight="24px">
       {text}
     </Text>
-    <Image width="20px" height="16px" src={iconSrc} />
+    <Image width="20px" height="16px" src={iconSrc} alt="button icon" />
   </StyledButton>
 );
 

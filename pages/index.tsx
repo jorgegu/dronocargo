@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Head from "next/head";
+
 import DeliveryHistoryPage from "../containers/DeliveryHistoryPage";
 import Layout from "../components/layout";
 import { Delivery } from "../interfaces";
@@ -10,16 +10,7 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ deliveryData }) => {
-  return (
-    <Layout>
-      <Head>
-        <title>Delivery History</title>
-        <meta name="description" content="Dronocargo delivery history" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <DeliveryHistoryPage deliveryData={deliveryData} />
-    </Layout>
-  );
+  return <DeliveryHistoryPage deliveryData={deliveryData} />;
 };
 
 export async function getStaticProps() {

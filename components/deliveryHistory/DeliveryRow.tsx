@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import Router from "next/router";
 import styled from "styled-components";
 import Cell from "./DeliveryCell";
 import ButtonWithIcon from "../shared/ButtonWithIcon";
@@ -8,7 +9,7 @@ import { Flex } from "../../core/ui";
 
 const Row = styled.div`
   display: grid;
-  grid-template-columns: 1fr repeat(2, 1.5fr) 1fr 1fr 1.5fr 3fr;
+  grid-template-columns: 1fr repeat(2, 1.5fr) 1fr 1fr 1.5fr 2.5fr;
   column-gap: 26px;
   &:not(:last-child) {
     border-bottom: solid 1px #e6e6e6;
@@ -54,7 +55,7 @@ const DeliveryRow: FunctionComponent<Props> = ({
       <Column>
         <Flex justifyContent="flex-end" gap="16px">
           <ButtonWithIcon
-            onClick={() => ""}
+            onClick={() => Router.push(`/shipment/${orderId}`)}
             text="Details"
             iconSrc="/details_icon.svg"
           />

@@ -1,13 +1,24 @@
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../core/theme";
+import Layout from "../components/layout";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <>
+      <Head>
+        <title>Delivery History</title>
+        <meta name="description" content="Dronocargo delivery history" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <ThemeProvider theme={theme}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
+    </>
   );
 }
 

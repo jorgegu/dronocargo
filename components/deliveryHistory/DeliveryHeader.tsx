@@ -1,6 +1,9 @@
-import { FunctionComponent } from "react";
+import { useState, FunctionComponent } from "react";
 import styled from "styled-components";
 import { Flex, Text, Button } from "../../core/ui";
+import StyledInput from "../shared/StyledInput";
+import Modal from "../../components/shared/Modal";
+import NewDeliveryContentModal from "./NewDeliveryContentModal";
 
 const StyledH1 = styled.h1`
   display: flex;
@@ -8,34 +11,12 @@ const StyledH1 = styled.h1`
   font-size: 30px;
 `;
 
-const InputContainer = styled.div`
-  position: relative;
-  border: solid 1px ${({ theme }) => theme.colors.borderGray};
-  border-radius: ${({ theme }) => theme.borderRadius};
-  box-shadow: ${({ theme }) => theme.boxShadow};
-  overflow: hidden;
-`;
+interface Props {
+  onCreateData: () => void;
+}
 
-const StyledImage = styled.img`
-  position: absolute;
-  left: 19px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 17.5px;
-  height: 17.5px;
-`;
-
-const StyledInput = styled.input`
-  padding: 8px 0 8px 48px;
-  font-size: 16px;
-  line-height: 24px;
-  border: none;
-  &::placeholder {
-    color: #808080;
-  }
-`;
-
-const DeliveryHeader: FunctionComponent = () => {
+const DeliveryHeader: FunctionComponent<Props> = ({ onCreateData }: Props) => {
+  const [isNewDelivery, setIsNewDelivery] = useState<boolean>(false);
   return (
     <Flex justifyContent="space-between" mt="24px" mb="48px">
       <StyledH1>
@@ -46,19 +27,27 @@ const DeliveryHeader: FunctionComponent = () => {
       </StyledH1>
 
       <Flex gap="16px">
-        <InputContainer>
-          <StyledInput placeholder="Search" />
-          <StyledImage src="/search_icon.svg" />
-        </InputContainer>
+        <StyledInput
+          onChange={() => "Not implemented"}
+          placeholder="Search"
+          iconSrc="/search_icon.svg"
+        />
         <Button
           color="white"
           backgroundColor="green"
           border="solid 1px"
           borderColor="darkGreen"
+          onClick={() => setIsNewDelivery(true)}
         >
           <Text lineHeight="24px">New delivery</Text>
         </Button>
       </Flex>
+      <Modal onClose={() => setIsNewDelivery(false)} isOpen={isNewDelivery}>
+        <NewDeliveryContentModal
+          onSubmitSuccess={onCreateData}
+          onClose={() => setIsNewDelivery(false)}
+        />
+      </Modal>
     </Flex>
   );
 };

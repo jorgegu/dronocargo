@@ -9,7 +9,12 @@ const Header: FunctionComponent = () => {
       </Text>
       <Flex gap="10px">
         <Text lineHeight="24px">Regina Zepeda</Text>
-        <Image width="20px" height="20px" src="/user_icon.svg" />
+        <Image
+          width="20px"
+          height="20px"
+          src="/user_icon.svg"
+          alt="user icon"
+        />
       </Flex>
     </Flex>
   );

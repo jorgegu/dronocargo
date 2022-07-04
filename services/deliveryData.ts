@@ -77,16 +77,18 @@ export const initialData: Delivery[] = [
 
 const DELIVERY_DATA_KEY = 'deliveryData';
 
-export const getDeliveryData = (): Delivery[] => {
+export const getDeliveryList = (): Delivery[] => {
   const dataString: string = localStorage.getItem(DELIVERY_DATA_KEY) || '[]'
   const data: Delivery[] = JSON.parse(dataString) || []
   return data;
 }
 
-export const updateDeliveryData = (data: Delivery): void => {
-  localStorage.setItem(DELIVERY_DATA_KEY, JSON.stringify(data));
+export const addDelivery = (newDelivery: Delivery): void => {
+  const data = getDeliveryList();
+  const newData = [newDelivery, ...data];
+  localStorage.setItem(DELIVERY_DATA_KEY, JSON.stringify(newData));
 }
 
-export const createDeliveryData = (): void => {
-  localStorage.setItem(DELIVERY_DATA_KEY, JSON.stringify(initialData));
+export const createDeliveryData = (data: Delivery[]): void => {
+  localStorage.setItem(DELIVERY_DATA_KEY, JSON.stringify(data));
 }
