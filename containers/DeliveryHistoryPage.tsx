@@ -8,11 +8,7 @@ interface Props {
   deliveryData: Delivery[];
 }
 
-const PageContainer = styled.div`
-  width: 100%;
-  max-width: 1160px;
-  margin: auto;
-`;
+const PageContainer = styled.div``;
 
 const DeliveryHistoryPage: FunctionComponent<Props> = ({
   deliveryData,

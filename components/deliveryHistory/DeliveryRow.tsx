@@ -1,19 +1,28 @@
 import { FunctionComponent } from "react";
 import styled from "styled-components";
 import Cell from "./DeliveryCell";
+import ButtonWithIcon from "../shared/ButtonWithIcon";
 import { Delivery } from "../../interfaces";
 
 const Row = styled.div`
   display: grid;
-  grid-template-columns: repeat(6, 1fr) 2fr;
+  grid-template-columns: 1fr repeat(2, 1.5fr) 1fr 1fr 1.5fr 3fr;
   column-gap: 26px;
-  border-bottom: solid 1px #e6e6e6;
+  &:not(:last-child) {
+    border-bottom: solid 1px #e6e6e6;
+  }
 `;
 const Column = styled.div`
+  align-self: center;
   padding: 32px 0;
 `;
 
-const ButtonWithIcon = styled.div``;
+const ActionsContainer = styled.div`
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+`;
+
 const DropdownButton = styled.div``;
 
 interface Props {
@@ -44,8 +53,18 @@ const DeliveryRow: FunctionComponent<Props> = ({
         <Cell headline="Technical check" value={technicalCheck} />
       </Column>
       <Column>
-        <ButtonWithIcon></ButtonWithIcon>
-        <DropdownButton></DropdownButton>
+        <ActionsContainer>
+          <ButtonWithIcon
+            onClick={() => ""}
+            text="Details"
+            iconSrc="/details_icon.svg"
+          />
+          <ButtonWithIcon
+            onClick={() => ""}
+            text="Actions"
+            iconSrc="/arrow_bottom_icon.svg"
+          />
+        </ActionsContainer>
       </Column>
     </Row>
   );

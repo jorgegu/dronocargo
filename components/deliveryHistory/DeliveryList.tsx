@@ -7,9 +7,7 @@ interface Props {
   dataList: Delivery[];
 }
 
-const Container = styled.div`
-  margin: 48px 0;
-`;
+const Container = styled.div``;
 const DeliveryList: FunctionComponent<Props> = ({ dataList }: Props) => {
   return (
     <Container>

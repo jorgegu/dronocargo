@@ -6,7 +6,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 56px;
+  margin: 24px 0 48px;
 `;
 
 const StyledText = styled.p<{ color?: string }>`
@@ -20,8 +20,9 @@ const StyledButton = styled.button`
   line-height: 24px;
   color: #fff;
   background: #307460;
-  border: none;
+  border: solid 1px #2a6352;
   border-radius: 4px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const InputContainer = styled.div`
