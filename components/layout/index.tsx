@@ -5,7 +5,7 @@ import Footer from "./Footer";
 
 const Container = styled.div`
   width: 100%;
-  max-width: 1160px;
+  max-width: ${({ theme }) => theme.breakpoints.xl};
   margin: auto;
 `;
 

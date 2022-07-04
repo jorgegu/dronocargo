@@ -2,7 +2,9 @@ import { FunctionComponent } from "react";
 import styled from "styled-components";
 import Cell from "./DeliveryCell";
 import ButtonWithIcon from "../shared/ButtonWithIcon";
+import Dropdown, { DropdonwOption } from "../shared/Dropdown";
 import { Delivery } from "../../interfaces";
+import { Flex } from "../../core/ui";
 
 const Row = styled.div`
   display: grid;
@@ -17,17 +19,14 @@ const Column = styled.div`
   padding: 32px 0;
 `;
 
-const ActionsContainer = styled.div`
-  display: flex;
-  gap: 16px;
-  justify-content: flex-end;
-`;
-
-const DropdownButton = styled.div``;
-
 interface Props {
   data: Delivery;
 }
+
+const ACTIONS: DropdonwOption[] = [
+  { value: "edit", displayValue: "Edit" },
+  { value: "delete", displayValue: "Delete" },
+];
 
 const DeliveryRow: FunctionComponent<Props> = ({
   data: { status, orderId, technician, platform, drone, technicalCheck },
@@ -53,18 +52,19 @@ const DeliveryRow: FunctionComponent<Props> = ({
         <Cell headline="Technical check" value={technicalCheck} />
       </Column>
       <Column>
-        <ActionsContainer>
+        <Flex justifyContent="flex-end" gap="16px">
           <ButtonWithIcon
             onClick={() => ""}
             text="Details"
             iconSrc="/details_icon.svg"
           />
-          <ButtonWithIcon
-            onClick={() => ""}
+          <Dropdown
+            onSelect={() => ""}
+            name="actions"
+            options={ACTIONS}
             text="Actions"
-            iconSrc="/arrow_bottom_icon.svg"
           />
-        </ActionsContainer>
+        </Flex>
       </Column>
     </Row>
   );

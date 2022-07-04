@@ -1,35 +1,18 @@
 import { FunctionComponent } from "react";
 import styled from "styled-components";
+import { Flex, Text, Button } from "../../core/ui";
 
-const Container = styled.div`
-  width: 100%;
+const StyledH1 = styled.h1`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 24px 0 48px;
-`;
-
-const StyledText = styled.p<{ color?: string }>`
+  gap: 16px;
   font-size: 30px;
-  ${({ color }) => `color: ${color || "#000"}`};
-`;
-
-const StyledButton = styled.button`
-  padding: 8px 16px;
-  font-size: 16px;
-  line-height: 24px;
-  color: #fff;
-  background: #307460;
-  border: solid 1px #2a6352;
-  border-radius: 4px;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const InputContainer = styled.div`
   position: relative;
-  border: solid 1px #d9d9d9;
-  border-radius: 4px;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+  border: solid 1px ${({ theme }) => theme.colors.borderGray};
+  border-radius: ${({ theme }) => theme.borderRadius};
+  box-shadow: ${({ theme }) => theme.boxShadow};
   overflow: hidden;
 `;
 
@@ -52,27 +35,31 @@ const StyledInput = styled.input`
   }
 `;
 
-const FlexContainer = styled.div`
-  display: flex;
-  gap: 16px;
-`;
-
 const DeliveryHeader: FunctionComponent = () => {
   return (
-    <Container>
-      <FlexContainer>
-        <StyledText>Delivery</StyledText>
-        <StyledText color="#808080">History</StyledText>
-      </FlexContainer>
-      <FlexContainer>
+    <Flex justifyContent="space-between" mt="24px" mb="48px">
+      <StyledH1>
+        <Text fontWeight="400">Delivery</Text>
+        <Text fontWeight="300" color="textGray">
+          History
+        </Text>
+      </StyledH1>
+
+      <Flex gap="16px">
         <InputContainer>
           <StyledInput placeholder="Search" />
           <StyledImage src="/search_icon.svg" />
         </InputContainer>
-
-        <StyledButton>New delivery</StyledButton>
-      </FlexContainer>
-    </Container>
+        <Button
+          color="white"
+          backgroundColor="green"
+          border="solid 1px"
+          borderColor="darkGreen"
+        >
+          <Text lineHeight="24px">New delivery</Text>
+        </Button>
+      </Flex>
+    </Flex>
   );
 };
 
