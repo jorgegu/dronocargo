@@ -4,12 +4,12 @@ import styled from "styled-components";
 import Cell from "./DeliveryCell";
 import ButtonWithIcon from "../shared/ButtonWithIcon";
 import Dropdown, { DropdonwOption } from "../shared/Dropdown";
-import { Delivery } from "../../interfaces";
+import { VehicleTypes } from "../../interfaces";
 import { Flex } from "../../core/ui";
 
 const Row = styled.div`
   display: grid;
-  grid-template-columns: 1fr repeat(2, 1.5fr) 1fr 1fr 1.5fr 2.5fr;
+  grid-template-columns: repeat(4, 1.5fr) 2.5fr;
   column-gap: 26px;
   &:not(:last-child) {
     border-bottom: solid 1px #e6e6e6;
@@ -21,7 +21,7 @@ const Column = styled.div`
 `;
 
 interface Props {
-  data: Delivery;
+  data: VehicleTypes;
 }
 
 const ACTIONS: DropdonwOption[] = [
@@ -30,32 +30,26 @@ const ACTIONS: DropdonwOption[] = [
 ];
 
 const DeliveryRow: FunctionComponent<Props> = ({
-  data: { status, orderId, technician, platform, drone, technicalCheck },
+  data: { makeId, makeName, vehicleTypeId, vehicleTypeName },
 }: Props) => {
   return (
     <Row>
       <Column>
-        <Cell headline="Status" value={status} />
+        <Cell headline="Make ID" value={makeId} />
       </Column>
       <Column>
-        <Cell headline="Order ID" value={orderId} />
+        <Cell headline="Make Name" value={makeName} />
       </Column>
       <Column>
-        <Cell headline="Technician" value={technician} />
+        <Cell headline="Vehicle Type ID" value={vehicleTypeId} />
       </Column>
       <Column>
-        <Cell headline="Platform" value={platform} />
-      </Column>
-      <Column>
-        <Cell headline="Drone" value={drone} />
-      </Column>
-      <Column>
-        <Cell headline="Technical check" value={technicalCheck} />
+        <Cell headline="Vehicle Type Name" value={vehicleTypeName} />
       </Column>
       <Column>
         <Flex justifyContent="flex-end" gap="16px">
           <ButtonWithIcon
-            onClick={() => Router.push(`/shipment/${orderId}`)}
+            onClick={() => Router.push(`/shipment/${makeId}`)}
             text="Details"
             iconSrc="/details_icon.svg"
           />

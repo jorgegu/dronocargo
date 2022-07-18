@@ -2,32 +2,27 @@ import { useState, useEffect, FunctionComponent } from "react";
 import styled from "styled-components";
 import DeliveryHeader from "../components/deliveryHistory/DeliveryHeader";
 import DeliveryList from "../components/deliveryHistory/DeliveryList";
-import { createDeliveryData, getDeliveryList } from "../services/deliveryData";
-import { Delivery } from "../interfaces";
-
-interface Props {
-  deliveryData: Delivery[];
-}
+import getVehicleTypes from "../services/getVehicleTypes";
+import { VehicleTypes } from "../interfaces";
 
 const PageContainer = styled.div``;
 
-const DeliveryHistoryPage: FunctionComponent<Props> = ({
-  deliveryData,
-}: Props) => {
-  const [data, setData] = useState<Delivery[]>(deliveryData);
+const DeliveryHistoryPage: FunctionComponent = () => {
+  const [data, setData] = useState<VehicleTypes[] | null>(null);
 
   useEffect(() => {
-    //Setting data to localStorage
-    createDeliveryData(deliveryData);
+    const getData = async () => {
+      const response = await getVehicleTypes();
+      setData(response);
+    };
+    getData();
   }, []);
 
-  const handleCreateData = () => {
-    setData(getDeliveryList());
-  };
+  const handleCreateData = () => {};
   return (
     <PageContainer>
       <DeliveryHeader onCreateData={handleCreateData} />
-      <DeliveryList dataList={data} />
+      {data && <DeliveryList dataList={data} />}
     </PageContainer>
   );
 };

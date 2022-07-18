@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
 import styled from "styled-components";
 import DeliveryRow from "./DeliveryRow";
-import { Delivery } from "../../interfaces";
+import { VehicleTypes } from "../../interfaces";
 
 interface Props {
-  dataList: Delivery[];
+  dataList: VehicleTypes[];
 }
 
 const Container = styled.div``;

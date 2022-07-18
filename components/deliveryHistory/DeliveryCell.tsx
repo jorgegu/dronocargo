@@ -1,10 +1,9 @@
 import { FunctionComponent } from "react";
-import styled from "styled-components";
 import { Text } from "../../core/ui";
 
 interface Props {
   headline: string;
-  value: string;
+  value: string | number;
 }
 
 const Cell: FunctionComponent<Props> = ({ headline, value }: Props) => (
